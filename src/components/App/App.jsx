@@ -29,34 +29,53 @@ function App() {
     .then(data=>{
       let point = determineWinner(data.cards[0].value, data.cards[1].value)
       if(point === 'computer'){
-        let newCompScore = state.score.computer +1;
-        let newMessage = 'Computer Wins'
-        let scores = state.score;       
+        let newCompScore = state.score.computer +1;  
+        let scores = state.score;
         scores.computer = newCompScore;
+        let newMessage;
+        if(state.remaining === 2){
+          newMessage = finalScore()
+        } else {
+          newMessage = 'Computer wins this hand';
+        }   
         scores.message = newMessage;
         setState((prevState)=>{
-          return {...prevState, score:scores, cards:data.cards, remaining:data.remaining}
+          return {...prevState, modal:true, score:scores, cards:data.cards, remaining:data.remaining}
         })
       } else if(point === 'player'){
         let newPlayerScore = state.score.player +1;
-        let newMessage = 'Player Wins';
         let scores = state.score;
         scores.player = newPlayerScore;
+        let newMessage;
+        if(state.remaining === 2){
+          newMessage = finalScore()
+        } else {
+          newMessage = 'Player wins this hand';
+        } 
         scores.message = newMessage;
         setState((prevState)=>{
-          return {...prevState, score:scores, cards:data.cards, remaining:data.remaining}
+          return {...prevState, modal:true,  score:scores, cards:data.cards, remaining:data.remaining}
         })
       } else {
-        let newMessage = 'War!'
         let scores = state.score;
+        let newMessage;
+        if(state.remaining === 2){
+          newMessage = finalScore()
+        } else {
+          newMessage = 'WAR!';
+        } 
         scores.message = newMessage
         setState((prevState)=>{
-          return {...prevState, score:scores, cards:data.cards, remaining:data.remaining}
+          return {...prevState, modal:true,  score:scores, cards:data.cards, remaining:data.remaining}
         })
       }
     })
     .then(()=>{
-
+      setTimeout(()=>{
+        setState((prevState)=>{
+          return {...prevState, modal:false}
+        })
+      },1000)
     })
     
   
@@ -78,8 +97,14 @@ function App() {
 
   }
 
-  function handleClose(){
-    console.log(`close now`)
+  function finalScore(){
+    if(state.score.computer > state.score.player){
+      return 'COMPUTER WINS THE WAR!'
+    } else if(state.score.computer < state.score.player){
+      return 'PLAYER WINS THE WAR!'
+    } else {
+      return 'AN UNBELEIVABLE TIE!'
+    }
   }
 
   return (
@@ -116,9 +141,9 @@ function App() {
         {state.deck_id && <Button disabled={state.remaining == 0} variant="primary" className='--app-draw-card-btn' onClick={state.deck_id && drawCards}>Draw</Button>}  
       </div>
       {state.modal !== undefined && <div className='--app-modal-message'>
-        <Modal show={false} >
-          <Modal.Header closeButton>
-            <Modal.Title>Test</Modal.Title>
+        <Modal show={state.modal} >
+          <Modal.Header>
+            <Modal.Title>{state.score.message}</Modal.Title>
           </Modal.Header>
         </Modal>
       </div>}
