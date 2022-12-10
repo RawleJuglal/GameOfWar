@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
+
+.--app-app-container{
+    min-height:100vh;
+}
+
+.--app-title{
+    font-family: 'Black Ops One', cursive;
+    font-size:3rem;
+    text-align:center;
+    background: #000000;
+    background: linear-gradient(to bottom, #000000 27%, #FF0000 60%, #FFF700 73%);
+    -webkit-background-clip: text;
+    background-clip:text;
+    -webkit-text-fill-color: transparent;
+}
+
+.--app-score-container{
+    display:grid;
+    grid-template-columns:25% 50% 25%;
+    text-align:center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.--app-computer-side{
+    background-color:red;
+  }
+  .--app-remaining-side{
+    background-color:black;
+  }
+  .--app-player-side{
+    background-color:blue;
+  }
+
+.--app-side-heading{
+    color:white;
+    font-weight:bold;
+}
+
+.--app-side-num{
+    font-size:1.5rem;
+    color:white;
+}
+
+.--app-presenter-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+}
+
+.--app-card-title{
+    margin:20px 0px;
+    text-shadow: 1px 0px 1px #ccc, 0px 1px 1px #eee, 
+    2px 1px 1px #ccc, 1px 2px 1px #eee,
+    3px 2px 1px #ccc
+}
+
+.--app-computer-card, .--app-player-card{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.--app-card-img{
+    max-width:150px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.--app-placeholder-card{
+    width:150px;
+    height:208.41px;
+    border-radius:5px;
+    border:2px solid black;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.--app-controls-container{
+    display:flex;
+    justify-content: space-evenly;
+    margin:50px 0px;
+}
+
+.--app-new-deck-btn, .--app-draw-card-btn{
+    background-color:#FBF308 !important;
+    color:#C1C1C1 !important;
+    border-color: #FBF308 !important;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    min-width:125px;
+}
+
+.--app-new-deck-btn:hover, .--app-draw-card-btn:hover{
+    background-color:#D3CD04 !important;
+    color:#FFF !important;
+}
+
+@media screen and (min-width:480px) {
+    .--app-presenter-container{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .--app-controls-container{
+        justify-content: center;
+    }
+
+    .--app-new-deck-btn, .--app-draw-card-btn{
+        margin:15px 15px;
+    }
+}
